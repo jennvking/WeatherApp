@@ -1,0 +1,1 @@
+This application allows users to search by city name to get the weather informationa at that time. It stores the city name, temperature, and time for a search history bar. More iterations and improvements to come!
