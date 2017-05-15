@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Weather App</title>
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/app/style/styles.css">
+    <!-- endinject -->
+</head>
+
+<body ng-controller="WeatherAppController as vm">
+
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Weather App</h1>
+            <p>Find the current weather in any city!</p>
+        </div>
+
+        <div class="row" id="firstRow">
+            <!-- /input-group -->
+            <div class="col-xs-12 col-md-4">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="City Name" ng-model="vm.cityInput" required>
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" ng-click="vm.cityWeatherInfo(vm.cityInput)">Search</button>
+                    </span>
+                </div>
+            </div>
+            <!--<div class="col-xs-12 col-md-8">
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-warning" ng-repeat="name in vm.cityNames" ng-click="vm.cityWeatherInfo(vm.cityInput)">{{data.name}}</button>
+                </div>
+            </div> -->
+
+
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12 col-md-9">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">City Weather Information</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <h1 id="cityName">{{vm.results.name}}</h1>
+                            <!--<p id="cityLatLon">{{vm.cityLatLon}}</p>-->
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-xs-4 text-center">
+                                <div class="well text-center">
+                                    <p> Temperature (F)
+                                    <br> {{vm.results.main.temp}}</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-4 text-center">
+                                <div class="well text-center">
+                                    <p>Lowest Temp (F)
+                                    <br> {{vm.results.main.temp_min}}</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-4 text-center">
+                                <div class="well text-center">
+                                    <p>Highest Temp (F)
+                                    <br> {{vm.results.main.temp_max}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4 text-center">
+                                <div class="well text-center">
+                                    <p>Pressure
+                                    <br> {{vm.results.main.pressure}}</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-4 text-center">
+                                <div class="well text-center">
+                                    <p>Humidity
+                                    <br> {{vm.results.main.humidity}}</p>
+                                </div>
+                            </div>
+                            <div class="col-xs-4 text-center">
+                                <div class="well text-center">
+                                    <p>Wind Speed
+                                    <br> {{vm.results.wind.speed}}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-3">
+                <div class="panel panel-danger">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Search History</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-group">
+                            <li class="list-group-item" ng-repeat="data in vm.cityNames">
+                                <p>City: {{data.name}}
+                                <br> Temperature (F): {{data.temperature}}
+                                <br> Time Searched: {{data.date}}</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <!-- endbower -->
+
+    <!-- inject:js -->
+    <script src="/app/app.module.js"></script>
+    <script src="/app/main.controller.js"></script>
+    <script src="/app/weather.factory.js"></script>
+    <!-- endinject -->
+</body>
+
+</html>
